@@ -1,11 +1,15 @@
-.my_btn {
+/* 1) 특이성 높이기: 요소명+클래스 */
+a.my_btn {
+  color: #ffffff !important;          /* 글자색 강제 지정 */
+  text-decoration: none !important;   /* 밑줄 제거 강제 */
+  background-color: #007acc;          /* 기본 배경 */
   display: inline-block;
   padding: 0.5em 1em;
   border-radius: 4px;
-  background-color: #007acc;
-  color: #fff;
-  text-decoration: none;
 }
-.my_btn:hover {
-  background-color: #005fa3;
+
+/* 2) 호버 시 */
+a.my_btn:hover {
+  background-color: #005fa3 !important;
+  color: #ffffff !important;
 }

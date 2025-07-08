@@ -13,6 +13,8 @@ layout: post
 
 ![https://open.kakao.com/o/gHFBltzg](/assets/open_chat_qr.png){: width="100px" }
 
-<a href="https://open.kakao.com/o/gHFBltzg" class="my_btn">오픈채팅방 입장하기</a>
+<a href="https://open.kakao.com/o/gHFBltzg" class="my_btn">
+  <span style="display:block;">오픈채팅방 입장하기</span>
+  <span style="display:block;">(참여코드: nasa25)</span>
+</a>
 
-참여코드: nasa25
