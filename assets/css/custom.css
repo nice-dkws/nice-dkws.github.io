@@ -1,0 +1,11 @@
+.my_btn {
+  display: inline-block;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  background-color: #007acc;
+  color: #fff;
+  text-decoration: none;
+}
+.my_btn:hover {
+  background-color: #005fa3;
+}

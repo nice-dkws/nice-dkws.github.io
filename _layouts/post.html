@@ -4,6 +4,8 @@
 
         {%- include head.html -%}
 
+        <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}" />
+
         {% if page.previous %}
             <link rel="prev" href="{{site.baseurl}}{{page.previous.url}}" />
         {% else %}
