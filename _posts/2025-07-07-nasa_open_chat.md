@@ -1,8 +1,8 @@
 ---
-title: 데이터분석
-author: Unknown Bimil
-date: 2025-07-07
-category: 데이터분석
+title: NASA 오픈채팅방 안내
+author: nice-dkws
+date: 2025-07-08
+category: NASA
 layout: post
 ---
 
@@ -12,6 +12,6 @@ layout: post
 * 형식: 닉네임 / 직무 / 참가했던NASA(B,C,D,X)
 (B:베이직, C:챌린지, D:디스커버리, X:참여이력없음)
 
-![대체 텍스트](./assets/open_chat_qr.png)
+![대체 텍스트](./assets/gitbook/open_chat_qr.png)
 <a href="https://open.kakao.com/o/gHFBltzg" class="btn">오픈채팅방 입장하기</a>
 참여코드: nasa25
