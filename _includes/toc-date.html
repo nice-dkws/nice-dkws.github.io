@@ -21,6 +21,18 @@
             }
             return true;
         }
+
+        document.querySelectorAll('.chapter > a').forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const sublist = this.nextElementSibling;
+                if (sublist.style.display === 'none') {
+                    sublist.style.display = 'block';
+                } else {
+                    sublist.style.display = 'none';
+                }
+            });
+        });
     </script>
 
     <nav role="navigation">
@@ -54,7 +66,7 @@
                     <a href="#" onclick="pageScrollToTop(this)">
                         {{ category.name | escape }}
                     </a>
-                    <ul>
+                    <ul style="display: none;">
                         {% for page in category.items %}
                             <li class="chapter" data-level="1.2" data-path="{{site.baseurl}}{{page.url}}">
                                 <a href="{{site.baseurl}}{{page.url}}" onclick="pageScrollToTop(this)">
@@ -66,7 +78,7 @@
                 </li>
             {% endfor %}
 
-
+            <!--
             <li class="divider"></li>
             
             {% if site.ordered_collections %}
@@ -135,6 +147,7 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
+            -->
 
             <!-- Handle uncategorized pages -->
             <!--
