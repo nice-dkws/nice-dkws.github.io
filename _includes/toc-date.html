@@ -54,21 +54,6 @@
             <li class="divider"></li>
             -->
 
-            {% assign categories = site.collections | map: "label" | uniq %}
-            {% for category in categories %}
-                <li>
-                    <a href="{{ site.baseurl }}/{{ category }}">{{ category | capitalize }}</a>
-                    <ul>
-                        {% assign pages = site[category] | sort: "title" %}
-                        {% for page in pages %}
-                            <li>
-                                <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title | escape }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% endfor %}
-
 
             {% if page.url == "/index.html" or page.url == "/" %}
             <li class="chapter active" data-level="1.1" data-path="{{site.baseurl}}">
