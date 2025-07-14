@@ -47,7 +47,32 @@
             </li>
 
             <li class="divider"></li>
-            <!--
+                       
+            {% assign pages_categories = site.pages | group_by: "category" %}
+            {% for category in pages_categories %}
+                <li class="chapter" data-level="1.1" data-path="{{site.baseurl}}/{{category.name}}">
+                    <a href="#" onclick="pageScrollToTop(this)">
+                        {{ category.name | escape }}
+                    </a>
+                    <ul style="display: none;">
+                        {% assign sorted_pages = category.items | sort: "date" | reverse %}
+                        {% for page in sorted_pages %}
+                            <li class="chapter" data-level="1.2" data-path="{{site.baseurl}}{{page.url}}">
+                                <a href="{{site.baseurl}}{{page.url}}" onclick="pageScrollToTop(this)">
+                                    {{ page.title | escape }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li class="divider"></li>
+
+            
             {% if site.ordered_collections %}
                 {% for label in site.ordered_collections %}
                     {% assign collection = site.collections | where: "label", label | first %}
@@ -114,31 +139,11 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
-            -->
 
             <li class="divider"></li>
             <li class="divider"></li>
             <li class="divider"></li>
             <li class="divider"></li>
-            
-            {% assign pages_categories = site.pages | group_by: "category" %}
-            {% for category in pages_categories %}
-                <li class="chapter" data-level="1.1" data-path="{{site.baseurl}}/{{category.name}}">
-                    <a href="#" onclick="pageScrollToTop(this)">
-                        {{ category.name | escape }}
-                    </a>
-                    <ul style="display: none;">
-                        {% assign sorted_pages = category.items | sort: "date" | reverse %}
-                        {% for page in sorted_pages %}
-                            <li class="chapter" data-level="1.2" data-path="{{site.baseurl}}{{page.url}}">
-                                <a href="{{site.baseurl}}{{page.url}}" onclick="pageScrollToTop(this)">
-                                    {{ page.title | escape }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% endfor %}
 
             <!-- Handle uncategorized pages -->
             <!--
