@@ -53,6 +53,24 @@
             </li>
             <li class="divider"></li>
             -->
+
+            {% assign categories = site.pages | map: "path" | map: "split: '/'" | map: "first" | uniq %}
+            {% for category in categories %}
+                <li>
+                    <a href="{{ site.baseurl }}/{{ category }}">{{ category | capitalize }}</a>
+                    <ul>
+                        {% for page in site.pages %}
+                            {% if page.path contains category %}
+                                <li>
+                                    <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title | escape }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+
+
             {% if page.url == "/index.html" or page.url == "/" %}
             <li class="chapter active" data-level="1.1" data-path="{{site.baseurl}}">
             {% else %}
