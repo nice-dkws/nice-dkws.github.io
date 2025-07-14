@@ -54,17 +54,16 @@
             <li class="divider"></li>
             -->
 
-            {% assign categories = site.pages | map: "path" | map: "split: '/'" | map: "first" | uniq %}
+            {% assign categories = site.collections | map: "label" | uniq %}
             {% for category in categories %}
                 <li>
                     <a href="{{ site.baseurl }}/{{ category }}">{{ category | capitalize }}</a>
                     <ul>
-                        {% for page in site.pages %}
-                            {% if page.path contains category %}
-                                <li>
-                                    <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title | escape }}</a>
-                                </li>
-                            {% endif %}
+                        {% assign pages = site[category] | sort: "title" %}
+                        {% for page in pages %}
+                            <li>
+                                <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title | escape }}</a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </li>
