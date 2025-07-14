@@ -44,11 +44,10 @@
             </div>
 
             <script>
-            fetch('{{ site.baseurl }}/assets/metadata-home.json')
-                .then(response => response.json())
-                .then(metadata => {
-                    gitbook.page.hasChanged(metadata);
-                });
+            var gitbook = gitbook || [];
+            gitbook.push(function() {
+                gitbook.page.hasChanged({%- include metadata-home.json.tpl -%});
+            });
             </script>
         </div>
 
