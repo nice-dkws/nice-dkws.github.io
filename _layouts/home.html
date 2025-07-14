@@ -28,6 +28,28 @@
                     </h1>
                 </div>
 
+                
+
+                <div class="categories-menu">
+                    <ul>
+                        {% assign categories = site.pages | map: "path" | map: "split: '/'" | map: "first" | uniq %}
+                        {% for category in categories %}
+                            <li>
+                                <a href="{{ site.baseurl }}/{{ category }}">{{ category | capitalize }}</a>
+                                <ul>
+                                    {% for page in site.pages %}
+                                        {% if page.path contains category %}
+                                            <li>
+                                                <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title | escape }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
                 <div class="body-inner">
                     {%- include body.html -%}
 
@@ -44,34 +66,15 @@
             </div>
 
             <script>
-            var gitbook = gitbook || [];
-            gitbook.push(function() {
-                gitbook.page.hasChanged({%- include metadata-home.json.tpl -%});
-            });
+            fetch('{{ site.baseurl }}/assets/metadata-home.json')
+                .then(response => response.json())
+                .then(metadata => {
+                    gitbook.page.hasChanged(metadata);
+                });
             </script>
         </div>
 
         {%- include footer.html -%}
-
-        <div class="categories-menu">
-    <ul>
-        {% assign categories = site.pages | map: "path" | map: "split: '/'" | map: "first" | uniq %}
-        {% for category in categories %}
-            <li>
-                <a href="{{ site.baseurl }}/{{ category }}">{{ category | capitalize }}</a>
-                <ul>
-                    {% for page in site.pages %}
-                        {% if page.path contains category %}
-                            <li>
-                                <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title | escape }}</a>
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
 
     </body>
 </html>
