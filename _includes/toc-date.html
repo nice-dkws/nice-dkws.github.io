@@ -55,7 +55,9 @@
                         {{ category.name | escape }}
                     </a>
                     <ul>
-                        {% for page in category.items | sort: "date" | reverse %}
+                        {% assign valid = category.items | where_exp: "p", "p.date" %}
+                        {% assign sorted = valid | sort: "date" | reverse %}
+                        {% for page in sorted %}
                             <li class="chapter" data-level="1.2" data-path="{{site.baseurl}}{{page.url}}">
                                 <a href="{{site.baseurl}}{{page.url}}" onclick="pageScrollToTop(this)">
                                     {{ page.title | escape }}
