@@ -31,7 +31,6 @@
             <a href="{{site.baseurl}}/assets/search.html">Click to Search</a>
         </div>
         <ul class="summary">
-
             {% if page.url == "/index.html" or page.url == "/" %}
             <li class="chapter active" data-level="1.1" data-path="{{site.baseurl}}">
             {% else %}
@@ -48,7 +47,7 @@
             </li>
 
             <li class="divider"></li>
-
+            <!--
             {% if site.ordered_collections %}
                 {% for label in site.ordered_collections %}
                     {% assign collection = site.collections | where: "label", label | first %}
@@ -115,6 +114,7 @@
                     {% endif %}
                 {% endfor %}
             {% endif %}
+            -->
 
             <li class="divider"></li>
             <li class="divider"></li>
@@ -127,8 +127,9 @@
                     <a href="#" onclick="pageScrollToTop(this)">
                         {{ category.name | escape }}
                     </a>
-                    <ul>
-                        {% for page in category.items %}
+                    <ul style="display: none;">
+                        {% assign sorted_pages = category.items | sort: "date" | reverse %}
+                        {% for page in sorted_pages %}
                             <li class="chapter" data-level="1.2" data-path="{{site.baseurl}}{{page.url}}">
                                 <a href="{{site.baseurl}}{{page.url}}" onclick="pageScrollToTop(this)">
                                     {{ page.title | escape }}
@@ -138,6 +139,28 @@
                     </ul>
                 </li>
             {% endfor %}
+
+            <!-- Handle uncategorized pages -->
+            <!--
+            {% assign uncategorized_pages = site.pages | where: "category", nil %}
+            {% if uncategorized_pages.size > 0 %}
+                <li class="chapter" data-level="1.1" data-path="{{site.baseurl}}/ETC">
+                    <a href="#" onclick="pageScrollToTop(this)">
+                        ETC
+                    </a>
+                    <ul style="display: none;">
+                        {% assign sorted_uncategorized_pages = uncategorized_pages | sort: "date" | reverse %}
+                        {% for page in sorted_uncategorized_pages %}
+                            <li class="chapter" data-level="1.2" data-path="{{site.baseurl}}{{page.url}}">
+                                <a href="{{site.baseurl}}{{page.url}}" onclick="pageScrollToTop(this)">
+                                    {{ page.title | escape }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endif %}
+            -->
         </ul>
     </nav>
 </div>
