@@ -51,7 +51,7 @@
             {% assign pages_categories = site.pages | group_by: "category" %}
             {% for category in pages_categories %}
                 <li class="chapter" data-level="1.1" data-path="{{site.baseurl}}/{{category.name}}">
-                    <a href="#" onclick="pageScrollToTop(this)">
+                    <a href="#">
                         {{ category.name | escape }}
                     </a>
                     <ul>
