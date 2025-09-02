@@ -17,4 +17,3 @@ layout: post
   <span style="display:block;">오픈채팅방 입장하기</span>
   <span style="display:block;">(참여코드: nasa25)</span>
 </a>
-
